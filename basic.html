@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript basics</title>
+</head>
+
+<body>
+    <h1>Javascript basics</h1>
+    <ul>
+        <li>Spring</li>
+        <li>Summer</li>
+        <li>Fall</li>
+        <li>Winter</li>
+    </ul>
+    <script>
+      //blocking synchronous code
+      (() => {
+        console.log("blocking synchronous code")
+        console.log("Lets go")
+
+        function two() {
+          console.log("two")
+        }
+
+        function one(){
+          console.log("One")
+          two()
+          console.log("Three")
+        }
+
+        one()
+        console.log("End")
+      })();
+
+      //non-blocking asynchronous code
+      (() => {
+        console.log("non-blocking asynchronous code")
+        console.log("Start")
+
+        function two() {
+          setTimeout(() => {
+            console.log("Two")
+          }, 1000);
+        }
+
+        function one() {
+          setTimeout(() => {
+            console.log("One")
+          }, 0);
+          two()
+          console.log("Three")
+        }
+
+        one()
+        console.log("End")
+      })();
+    </script>
+</body>
+
+</html>
